@@ -1,23 +1,28 @@
 <template>
+
+<div class="menu">
+  <a v-for="(a) in 메뉴들" :key="a">{{a}}</a>
+
+  <a>Products</a>
+  <a>About</a>
+</div>
+<!--반복문
+v-for= "(작명,i) in 횟수" :key="작명"
+횟수 대신 array, object 자료형 가능 >> 자료갯수만큼 반복
+작명한 변수는 데이터 안의 자료가 된다.
+a는 array자료 i는 1씩증가 
+key 반복돌린 요소를 구분하기 위한 요소
+-->
+
+
   <img alt="Vue logo" src="./assets/logo.png">
-  <div>
+  <div v-for="(x,i) in products" :key="i">
     
-    <h4 >{{products[0]}}</h4>
-    <p> {{price1}} 50만원</p>
+    <h4 >{{products[i]}}</h4>
+    <p> 50만원</p>
    
   </div>
-  <div>
-    
-    <h4 >{{products[2]}}</h4>
-    <p> {{price1}} 60만원</p>
-   
-  </div>
-  <div>
-    
-    <h4 >{{products[2]}}</h4>
-    <p> {{price1}} 70만원</p>
-   
-  </div>
+  
 </template>
 
 <script>
@@ -36,7 +41,7 @@ export default {
   name: 'App',
   data(){
     return{
-     
+     메뉴들: ['Home','Shop','About'],
      products :['역삼동 원룸','천호동 원룸','마포구 원룸'],
     }
   },
@@ -54,6 +59,18 @@ components: {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
   margin-top: 60px;
 }
+
+.menu{
+  background-color: darkslateblue;
+  padding: 15px;
+  border-radius: 5px ;
+}
+.menu a {
+  color: white;
+  padding: 10px;
+}
+
 </style>
