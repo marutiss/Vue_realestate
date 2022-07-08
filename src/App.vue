@@ -1,15 +1,24 @@
 <template>
 
+<div class="black-bg" v-if="모달창open==true">
+  <div class="white-bg">
+    <h4>상세페이지</h4>
+    <p>상세내용</p>
+    <button @click="모달창open=false">닫기</button>
+  </div>
+
+</div>
+
 <div class="menu">
   <a v-for="(a) in 메뉴들" :key="a">{{a}}</a>
 
-  <a>Products</a>
-  <a>About</a>
+
 </div>
 
 
 
-  <img alt="Vue logo" src="./assets/logo.png">
+
+ 
   <div v-for="(x,i) in products" :key="i">
     
     <!-- <h4 >{{products[i]}}</h4>
@@ -18,16 +27,19 @@
   </div>
 
  <div>
-  <h4 >{{products[0]}}</h4>
+  <img src="./assets/room0.jpg" class="room-img">
+  <h4 @click="모달창open=true">{{products[0]}}</h4>
     <p> 50만원</p>
    <button @click="신고수[0]++">허위매물신고</button> <span>신고수 : {{신고수[0]}}</span>
  </div>
 <div>
+  <img src="./assets/room1.jpg" class="room-img">
   <h4 >{{products[1]}}</h4>
     <p> 50만원</p>
    <button @click="신고수[1]++">허위매물신고</button> <span>신고수 : {{신고수[1]}}</span>
  </div>
 <div>
+  <img src="./assets/room2.jpg" class="room-img">
   <h4 >{{products[2]}}</h4>
     <p> 50만원</p>
    <button @click="신고수[2]++">허위매물신고</button> <span>신고수 : {{신고수[2]}}</span>
@@ -43,6 +55,7 @@ export default {
   name: 'App',
   data(){
     return{
+      모달창open : false, 
       신고수:[0,0,0],
      메뉴들: ['Home','Shop','About'],
      products :['역삼동 원룸','천호동 원룸','마포구 원룸'],
@@ -62,6 +75,28 @@ components: {
 </script>
 
 <style>
+body{
+  margin: 0;
+}
+div{
+  box-sizing: border-box;
+}
+.black-bg{
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed; padding: 20px;
+}
+.white-bg{
+  width: 100%; background: white;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.room-img{
+  width: 100%;
+  margin-top: 40px;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -96,4 +131,23 @@ components: {
 // 1. 하드코딩 해두면 추후 변경 힘듬
 // 2. 실시간 렌더링 기능: 데이터를 바꾸면 실시간으로 같이 바꿔줌
 // 자주 변할거같은 애들은 바인딩해두자
-// HTML 속성은 :속성="데이터 이름" :style="스타일"-->
+// HTML 속성은 :속성="데이터 이름" :style="스타일"
+
+UI만들기
+0. HTML CSS로 디자인
+1.ui의 현상태를 데이터로 저장
+2. 데이터에 따라 UI가 어떻게 보일지 작성
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
