@@ -1,9 +1,15 @@
 <template>
 
+
+
 <div class="black-bg" v-if="모달창open==true">
   <div class="white-bg">
-    <h4>상세페이지</h4>
-    <p>상세내용</p>
+    <h4>{{원룸들[상품번호].title}}</h4>
+    <p>
+     <img :src="원룸들[상품번호].image">
+      {{원룸들 [상품번호].content}}
+      {{원룸들 [상품번호].price}}원
+      </p>
     <button @click="모달창open=false">닫기</button>
   </div>
 
@@ -26,9 +32,9 @@
    <button @click="increase">추천!</button> <span>추천수 : {{추천수[i]}}</span> -->
   </div>
 
- <div v-for="(x,i) in 6" :key="i">
+ <div v-for="(x,i) in 원룸들" :key="i">
   <img :src="원룸들[i].image" class="room-img">
-  <h4 @click="모달창open=true">{{원룸들[i].title}}</h4>
+  <h4 @click="모달창open=true; 상품번호=i">{{원룸들[i].title}}</h4>
     <p> {{원룸들[i].price}}원</p>
    <button @click="추천수[i]++">추천!</button> <span>추천수 : {{추천수[i]}}</span>
  </div>
@@ -47,6 +53,7 @@ export default {
   name: 'App',
   data(){
     return{
+      상품번호: 0,
       원룸들 : room,
       모달창open : false, 
       추천수:[0,0,0,0,0,0],
@@ -126,11 +133,11 @@ div{
 // 자주 변할거같은 애들은 바인딩해두자
 // HTML 속성은 :속성="데이터 이름" :style="스타일"
 
-UI만들기
+동적 UI만들기
 0. HTML CSS로 디자인
 1.ui의 현상태를 데이터로 저장
-2. 데이터에 따라 UI가 어떻게 보일지 작성
-
+2. 데이터에 따라 HTML/UI가 어떻게 보일지 작성
+3. @click등으로 UI조작할 방법 만들기
 
 
 
