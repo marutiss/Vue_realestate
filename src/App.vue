@@ -6,8 +6,8 @@
   <div class="white-bg">
     <h4>{{원룸들[상품번호].title}}</h4>
     <p>
-     <img :src="원룸들[상품번호].image">
-      {{원룸들 [상품번호].content}}
+     <img :src="원룸들[상품번호].image"><br>
+      {{원룸들 [상품번호].content}}<br>
       {{원룸들 [상품번호].price}}원
       </p>
     <button @click="모달창open=false">닫기</button>
@@ -17,11 +17,10 @@
 
 <div class="menu">
   <a v-for="(a) in 메뉴들" :key="a">{{a}}</a>
-
-
 </div>
 
 
+<discount/>
 
 
  
@@ -44,9 +43,10 @@
 </template>
 
 <script>
+import BannerDiscount from './components/BannerDiscount.vue';
 
 import room from './assets/roomdata.js';
-room;
+
 //import {변수,변수} from './assets/roomdata.js';
 
 export default {
@@ -69,7 +69,8 @@ export default {
   },
 
 components: {
-    
+  
+    discount : BannerDiscount, //왼쪽이름으로 오른쪽 사용하겠음
   }
 }
 </script>
@@ -91,6 +92,8 @@ div{
   border-radius: 8px;
   padding: 20px;
 }
+
+
 
 .room-img{
   width: 100%;
@@ -139,8 +142,20 @@ div{
 2. 데이터에 따라 HTML/UI가 어떻게 보일지 작성
 3. @click등으로 UI조작할 방법 만들기
 
+컴포넌트 왜씀??
+재사용하기 쉽게됨 , 공간정리가 어썸함
+나중에 수정하기 정말 편함
+>>반복할 부분만 컴포넌트
 
-
+컴포넌트 쓰는법
+1. vue파일 import
+2. component{} 등록
+3.사용
+>>컴포넌트.vue 이름은 2단어 이상 사용해야한다.
+  싫다면
+  package.json 파일열기 >> rules항목
+  >>"vue/multi-word-component-names":"off"
+  >>아니면 여러단어를 쓰자
 
 
 
