@@ -1,19 +1,6 @@
 <template>
 
-
-
-<div class="black-bg" v-if="모달창open==true">
-  <div class="white-bg">
-    <h4>{{원룸들[상품번호].title}}</h4>
-    <p>
-     <img :src="원룸들[상품번호].image"><br>
-      {{원룸들 [상품번호].content}}<br>
-      {{원룸들 [상품번호].price}}원
-      </p>
-    <button @click="모달창open=false">닫기</button>
-  </div>
-
-</div>
+<Modal :원룸들="원룸들" :상품번호="상품번호" :모달창open="모달창open"/>
 
 <div class="menu">
   <a v-for="(a) in 메뉴들" :key="a">{{a}}</a>
@@ -31,21 +18,15 @@
    <button @click="increase">추천!</button> <span>추천수 : {{추천수[i]}}</span> -->
   </div>
 
- <div v-for="(x,i) in 원룸들" :key="i">
-  <img :src="원룸들[i].image" class="room-img">
-  <h4 @click="모달창open=true; 상품번호=i">{{원룸들[i].title}}</h4>
-    <p> {{원룸들[i].price}}원</p>
-   <button @click="추천수[i]++">추천!</button> <span>추천수 : {{추천수[i]}}</span>
- </div>
-
-
+<Card :원룸들="원룸들" />
 
 </template>
 
 <script>
-import BannerDiscount from './components/BannerDiscount.vue';
-
 import room from './assets/roomdata.js';
+import BannerDiscount from './components/BannerDiscount.vue';
+import TheModal from './components/TheModal.vue';
+import TheCard from './components/TheCard.vue';
 
 //import {변수,변수} from './assets/roomdata.js';
 
@@ -71,6 +52,8 @@ export default {
 components: {
   
     discount : BannerDiscount, //왼쪽이름으로 오른쪽 사용하겠음
+    Modal : TheModal,
+    Card : TheCard,
   }
 }
 </script>
@@ -157,8 +140,14 @@ div{
   >>"vue/multi-word-component-names":"off"
   >>아니면 여러단어를 쓰자
 
-
-
+부모/자식 컴포넌트
+app: 부모 ,modal: 자식
+부모랑 자식 둘다 쓰는 데이터면 부모에 기록할것
+자식은 부모의 데이터를 props로 받아서 쓴다.
+1. 임포트
+2. 등록
+3. 사용 
+4. 자식컴포넌트에게 props로 데이터 주기
 
 
 
