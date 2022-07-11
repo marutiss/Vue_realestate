@@ -7,7 +7,7 @@
   </div>
 
 
-  <discount :이름="오브젝트.name" :나이="오브젝트.age"/>
+  <discount />
 
 
  
@@ -18,8 +18,18 @@
    <button @click="increase">추천!</button> <span>추천수 : {{추천수[i]}}</span> -->
   </div>
 
-  <Card :원룸들="원룸들" />
-
+  
+  
+  <!-- 만약 card 컴포넌트에서 반복문 안쓰면 -->
+  <Card :원룸="원룸들[0]"/>
+  <Card :원룸="원룸들[1]"/>
+  <Card :원룸="원룸들[2]"/>
+  <Card :원룸="원룸들[3]"/>
+  <Card :원룸="원룸들[4]"/>
+  <Card :원룸="원룸들[5]"/> 
+  <!-- 축약하면
+  <Card :원룸="원룸들[i]" v-for="작명 in 원룸들" :key="작명" />
+  -->
 </template>
 
 <script>
@@ -149,9 +159,10 @@ app: 부모 ,modal: 자식
 2. 등록
 3. 사용 
 4. 자식컴포넌트에게 props로 데이터 주기
+
 <props자료 작명="문자자료">
 <props자료 :작명="숫자자료">
-
+<props자료 :작명="Array,object">
 
 
 

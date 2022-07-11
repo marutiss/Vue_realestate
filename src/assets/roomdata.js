@@ -1,7 +1,6 @@
 //export {변수, 변수...}
 
-//var room=
- export default [{
+ var room= [{
     id : 0,
     title: "Sinrim station 30 meters away",
     image: "https://codingapple1.github.io/vue/room0.jpg",
@@ -44,4 +43,4 @@
     price: 370000
   }];
 
-  //export default room;
+  export default room;
