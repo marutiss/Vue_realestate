@@ -1,13 +1,13 @@
 <template>
 
-<Modal :원룸들="원룸들" :상품번호="상품번호" :모달창open="모달창open"/>
+  <Modal :원룸들="원룸들" :상품번호="상품번호" :모달창open="모달창open"/>
 
-<div class="menu">
-  <a v-for="(a) in 메뉴들" :key="a">{{a}}</a>
-</div>
+  <div class="menu">
+    <a v-for="(a) in 메뉴들" :key="a">{{a}}</a>
+  </div>
 
 
-<discount/>
+  <discount :이름="오브젝트.name" :나이="오브젝트.age"/>
 
 
  
@@ -18,7 +18,7 @@
    <button @click="increase">추천!</button> <span>추천수 : {{추천수[i]}}</span> -->
   </div>
 
-<Card :원룸들="원룸들" />
+  <Card :원룸들="원룸들" />
 
 </template>
 
@@ -34,6 +34,7 @@ export default {
   name: 'App',
   data(){
     return{
+      오브젝트 :{name:'kim', age:20},
       상품번호: 0,
       원룸들 : room,
       모달창open : false, 
@@ -148,8 +149,8 @@ app: 부모 ,modal: 자식
 2. 등록
 3. 사용 
 4. 자식컴포넌트에게 props로 데이터 주기
-
-
+<props자료 작명="문자자료">
+<props자료 :작명="숫자자료">
 
 
 
