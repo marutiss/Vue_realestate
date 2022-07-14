@@ -20,8 +20,9 @@
 
 
   <discount />
-
-  <button @click="pricesort">가격순정렬</button>
+  <button @click="Hpricesort">높은가격순정렬</button>
+  <button @click="Lpricesort">낮은가격순정렬</button>
+  <button @click="sortLang">이름순정렬</button>
   <button @click="sortback">복구</button>
 
   <div v-for="(x,i) in products" :key="i">
@@ -73,11 +74,23 @@ export default {
     increase(){
     this.추천수++;
     },
-    pricesort(){
+    Hpricesort(){
+      this.원룸들.sort(function(a,b){
+        return b.price-a.price  //JS실력임
+      })
+    },
+    Lpricesort(){
       this.원룸들.sort(function(a,b){
         return a.price-b.price  //JS실력임
       })
     },
+    
+    //문자 배열
+    sortLang(){
+      this.원룸들.sort(function(a,b){
+        return a.title.localeCompare(b.title)
+      })
+    },  
     sortback(){
       this.원룸들=[...this.원룸원본];
     },
