@@ -6,6 +6,7 @@
      <img :src="원룸들[상품번호].image" style="width:100%"><br>
       {{원룸들 [상품번호].content}}<br></p>
       <input v-model.number="month">
+      <input type="range" min="1" max="12">
       <!-- <input @input="month=$event.target.value"> -->
       <!--"$event.target.value" 사용자가 입력한 값 쌩js문법-->
       <p>{{month}}개월 선택함: {{원룸들 [상품번호].price*month}}원</p>
@@ -22,6 +23,18 @@ export default {
       return{
         month: 1,
       }
+    },
+    watch:{
+      month(a){
+        if(a>=13){
+        alert('13이상 입력불가')
+        }
+        // const regex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
+        if(isNaN(a)==true){ //a!=Number로도 진행은 됬음
+          alert('숫자만 쓰세요!!')
+          this.month=1;
+          }
+      },
     },
     props : {
 

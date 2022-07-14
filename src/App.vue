@@ -1,6 +1,18 @@
 <template>
 
+
+
+  <!-- <div class="start" :class="{end : 모달창open}"> -->
+  <!--clss조건부 
+    {클래스명 : 조건}-->
+  
+  <transition name="fade">
   <Modal @closeModal="모달창open=false" :원룸들="원룸들" :상품번호="상품번호" :모달창open="모달창open"/>
+  </transition>
+  
+  <!-- </div> -->
+
+
 
   <div class="menu">
     <a v-for="(a) in 메뉴들" :key="a">{{a}}</a>
@@ -70,6 +82,15 @@ components: {
 </script>
 
 <style>
+.fade-enter-from{
+  opacity: 0;
+}
+.fade-enter-active{
+  transition: all 1s;
+}
+.fade-enter-to{
+  opacity: 1;
+}
 body{
   margin: 0;
 }
@@ -168,6 +189,28 @@ props는 읽기 전용이다.
 custom event
 1. 자식이 부모에게 요청하기 
 >> $emit('작명',데이터)
+
+CSS로 에니메이션 만들기
+1. 시작전에 class명 부여
+2. 끝난후 clss명 생성
+3. 원할때 2번 부착
+근데 vue눈 transition 쓰면됨
+1. 애니할곳에 transition 부착
+2. 클래스명 3개 스타일에 작성
+  .작명-enter-from{} 시작 스타일
+  .작명-enter-active{}
+  .작명-enter-to{} 끝 스타일
+
+  .작명-leave-from{} 시작 스타일
+  .작명-leave-active{}
+  .작명-leave-to{} 끝 스타일
+
+
+
+
+
+
+
 
 
 -->
