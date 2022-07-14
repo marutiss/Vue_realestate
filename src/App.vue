@@ -21,8 +21,9 @@
 
   <discount />
 
+  <button @click="pricesort">가격순정렬</button>
+  <button @click="sortback">복구</button>
 
- 
   <div v-for="(x,i) in products" :key="i">
     
     <!-- <h4 >{{products[i]}}</h4>
@@ -41,7 +42,7 @@
   <Card :원룸="원룸들[5]"/>  -->
   <!-- 축약하면-->
   <Card @openModal="모달창open=true; 상품번호=$event"  :원룸="원룸들[i]" v-for="(작명,i) in 원룸들" :key="작명" />
-  <!--@'자식이보낸거'로 메세지 수신  -->
+  <!--@'자식컴포넌트가 보낸거'로 메세지 수신  -->
 </template>
 
 <script>
@@ -50,12 +51,14 @@ import BannerDiscount from './components/BannerDiscount.vue';
 import TheModal from './components/TheModal.vue';
 import TheCard from './components/TheCard.vue';
 
+
 //import {변수,변수} from './assets/roomdata.js';
 
 export default {
   name: 'App',
   data(){
     return{
+      원룸원본: [...room],
       오브젝트 :{name:'kim', age:20},
       상품번호: 0,
       원룸들 : room,
@@ -69,7 +72,15 @@ export default {
   methods:{
     increase(){
     this.추천수++;
-    }
+    },
+    pricesort(){
+      this.원룸들.sort(function(a,b){
+        return a.price-b.price  //JS실력임
+      })
+    },
+    sortback(){
+      this.원룸들=[...this.원룸원본];
+    },
   },
 
 components: {
@@ -205,9 +216,15 @@ CSS로 에니메이션 만들기
   .작명-leave-active{}
   .작명-leave-to{} 끝 스타일
 
+정렬시키기
+만약 원룸들 정렬시
+  바닐라js면 원룸들 데이터 정렬>>HTML에 반영
+  vue는 데이터 정렬 끝
 
+sort()>> 배열안에 숫자가 있다면 오름차순으로 왼쪽부터 배열
+      >>원본이 아예 변형됨
 
-
+원본데이터 보호를 위해서는??
 
 
 
