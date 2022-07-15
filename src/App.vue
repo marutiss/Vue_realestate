@@ -19,7 +19,9 @@
   </div>
 
 
-  <discount />
+  <discount v-if="showdiscount==true" @closediscount="showdiscount=false" />
+
+
   <button @click="Hpricesort">높은가격순정렬</button>
   <button @click="Lpricesort">낮은가격순정렬</button>
   <button @click="sortLang">이름순정렬</button>
@@ -53,12 +55,14 @@ import TheModal from './components/TheModal.vue';
 import TheCard from './components/TheCard.vue';
 
 
+
 //import {변수,변수} from './assets/roomdata.js';
 
 export default {
   name: 'App',
   data(){
     return{
+      showdiscount: true,
       원룸원본: [...room],
       오브젝트 :{name:'kim', age:20},
       상품번호: 0,
@@ -95,6 +99,14 @@ export default {
       this.원룸들=[...this.원룸원본];
     },
   },
+
+  // mounted(){
+  //   setTimeout(() => {
+  //     this.showdiscount=false;
+  // }, 2000);
+  // }, 
+  //app.vue가 mount되고나서 실행
+
 
 components: {
   
@@ -238,6 +250,11 @@ sort()>> 배열안에 숫자가 있다면 오름차순으로 왼쪽부터 배열
       >>원본이 아예 변형됨
 
 원본데이터 보호를 위해서는??
+사본을 만들고 사본을 사용하자>>원룸들 : room, 원룸원본: [...room],
+[...데이터] 해서 사본을 만들자
+
+lifeCycle의 매인은 hook이다. 이거 쓸려고 배우는거야
+ajax는 created, mounted안에 적어서 요청
 
 
 

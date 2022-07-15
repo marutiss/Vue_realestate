@@ -41,6 +41,13 @@ export default {
       원룸들 : Array,
       상품번호: Number,
       모달창open: Boolean,
+    },
+    updated(){
+      if(this.month==2){
+        alert('3개월 이상부터 가능')
+        this.month=1;
+
+      }
     }
 
 }
